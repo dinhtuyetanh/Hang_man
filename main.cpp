@@ -1,18 +1,3 @@
-/*
-NGHĨ TỪ:
-- tạo list từ
-- chọn số ngẫu nhiên
-- thay thế các chữ cái bằng -
-
-ĐOÁN TỪ
-- chọn chủ đề
-- nhập chữ cái (tolower tất cả các kí tự)
-- đúng : thay - bằng chữ cái đúng
-- sai : cộng thêm 1 vào số lần sai. sai tối đa 7 lần
-- nếu đoán đúng trước khi số lần sai tối đa quá 7 thì thắng
-- nếu không in ra bạn thua và từ đúng
-*/
-
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -38,7 +23,6 @@ int main(){
     for (int i=0;i<(int) filename.size();i++) filename[i]=tolower(filename[i]);
     filename+=".txt";
     wordList(filename);
-    cout<<word_list[index]<<" "<<guess_word<<endl;
 
     char guess;
 
