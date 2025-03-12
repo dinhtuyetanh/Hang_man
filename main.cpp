@@ -18,20 +18,21 @@ string update(string &guessed_word, string word, char guess, int &bad_guessed);
 int main(){
     string filename;
     cout<<"Please choose the category you want to play.\n";
-    cout<<"Fruits/ Transports/ Animals/ Jobs/ ...\n";
+    cout<<"[Fruits/ Transports/ Animals/ Jobs]\n";
     cin>>filename;
     for (int i=0;i<(int) filename.size();i++) filename[i]=tolower(filename[i]);
     filename+=".txt";
     wordList(filename);
-
+    if((int)word_list.size()==0)  return 0;
     char guess;
 
     guess=tolower(guess);
     int bad_guessed=0;
+    cout<<guess_word<<endl;
     while(bad_guessed<max_bad_guess){
                 cout<<"Guess a character: ";
                 cin>>guess;
-                cout<<update(guess_word, word_list[index], guess, bad_guessed);
+                cout<<update(guess_word, word_list[index], guess, bad_guessed)<<endl;
                 cout<<"So lan doan sai: "<<bad_guessed<<endl;
     }
     if (word_list[index]==guess_word) cout<<"Congratulations! You win";
