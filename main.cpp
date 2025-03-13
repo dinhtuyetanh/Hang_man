@@ -29,13 +29,13 @@ int main(){
     guess=tolower(guess);
     int bad_guessed=0;
     cout<<guess_word<<endl;
-    while(bad_guessed<max_bad_guess){
+    while(bad_guessed<max_bad_guess&&word_list[index]!=guess_word){
                 cout<<"Guess a character: ";
                 cin>>guess;
                 cout<<update(guess_word, word_list[index], guess, bad_guessed)<<endl;
                 cout<<"So lan doan sai: "<<bad_guessed<<endl;
     }
-    if (word_list[index]==guess_word) cout<<"Congratulations! You win";
+    if (word_list[index]==guess_word) cout<<"Congratulations! You win."<<endl;
     else {
         cout<<"You lose. The correct word is "<<word_list[index];
     }
