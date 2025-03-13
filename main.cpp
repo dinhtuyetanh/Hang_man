@@ -26,12 +26,13 @@ int main(){
     if((int)word_list.size()==0)  return 0;
     char guess;
 
-    guess=tolower(guess);
+    
     int bad_guessed=0;
     cout<<guess_word<<endl;
     while(bad_guessed<max_bad_guess&&word_list[index]!=guess_word){
                 cout<<"Guess a character: ";
                 cin>>guess;
+                guess=tolower(guess);
                 cout<<update(guess_word, word_list[index], guess, bad_guessed)<<endl;
                 cout<<"So lan doan sai: "<<bad_guessed<<endl;
     }
