@@ -41,7 +41,7 @@ int main(){
     cout<<secret_word<<endl;
 
 
-    while(bad_guessed<max_bad_guess){
+    while(bad_guessed<max_bad_guess&&word_list[index]!=secret_word){
             guessAChar(guess);
             if (isCharInWord(guess,word_list[index])) {
                     updateCorectGuess(secret_word, word_list[index], guess, correctChars);
