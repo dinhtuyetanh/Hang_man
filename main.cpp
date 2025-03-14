@@ -15,7 +15,6 @@ int index=-1;
 string secret_word;
 int max_bad_guess=7;
 
-
 void wordList(const string &filename);
 bool isCharInWord(char guess, const string word);
 void updateIncorrectGuess(char guess, int &bad_guessed, vector <char> &incorrectChars);
@@ -30,16 +29,11 @@ int main(){
 
     chooseCategory(filename);
 
-
     filename+=".txt";
     wordList(filename);
     if((int)word_list.size()==0)  return 0;
 
-
-
-
     cout<<secret_word<<endl;
-
 
     while(bad_guessed<max_bad_guess&&word_list[index]!=secret_word){
             guessAChar(guess);
