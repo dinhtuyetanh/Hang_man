@@ -20,8 +20,6 @@ dancer
 writer
 tailor
 painter
-mechanic
-musician
 driver
 artist
 barber
