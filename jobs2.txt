@@ -16,8 +16,6 @@ postman
 reporter
 sculptor
 soldier
-surgeon
-waiter
 waitress
 translator
 professor
@@ -25,3 +23,5 @@ architect
 astronaut
 bartender
 fisherman
+mechanic
+musician
