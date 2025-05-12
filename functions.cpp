@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 #include "functions.h"
 #include "graphics.h"
 string filename="";
@@ -71,11 +69,9 @@ char guessAChar(SDL_Renderer* renderer, TTF_Font* font, TTF_Font* font1, SDL_Col
     char g='\0';
     chars.push_back(g);
     do{
-
         SDL_Event e;
         while (SDL_PollEvent(&e)){
             if (e.type == SDL_QUIT) exit(0);
-
             if (e.type==SDL_KEYDOWN){
                 SDL_Keycode key = e.key.keysym.sym;
 
@@ -124,7 +120,6 @@ char guessAChar(SDL_Renderer* renderer, TTF_Font* font, TTF_Font* font1, SDL_Col
     }
     while (isCharInWord(g, chars,x));
     return g;
-
 }
 
 void updateWin(SDL_Renderer* renderer, int &bad_guess, bool &running, const int&Score, const int&hint1){
@@ -161,7 +156,6 @@ void updateWin(SDL_Renderer* renderer, int &bad_guess, bool &running, const int&
                 }
                 if (x>350&&x<450&&y>395&&y<430){
                      exit(0);
-
                 }
             }
         }
@@ -202,4 +196,3 @@ void updateLose(SDL_Renderer *renderer, int &bad_guess, bool &running){
         }
     }
 }
-
