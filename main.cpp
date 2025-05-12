@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #include "functions.h"
 #include "graphics.h"
 
