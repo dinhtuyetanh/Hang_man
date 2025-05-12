@@ -1,10 +1,7 @@
-
 #include "functions.h"
 #include "graphics.h"
 
 using namespace std;
-
-
 
 int main(int argc, char* argv[])
 {
@@ -22,6 +19,12 @@ int main(int argc, char* argv[])
     SDL_Rect rectHiddenText = {160, 350, 500, 60}, rectMistakes = {215, 265,365,45};
 
     if (!font1) {
+        SDL_Log("Font load error: %s", TTF_GetError());
+    }
+    if (!font) {
+        SDL_Log("Font load error: %s", TTF_GetError());
+    }
+    if (!score) {
         SDL_Log("Font load error: %s", TTF_GetError());
     }
 
@@ -62,7 +65,6 @@ int main(int argc, char* argv[])
             }
             SDL_FlushEvent(SDL_KEYDOWN);
         }
-
         SDL_RenderClear(renderer);
 
        if (state == INTRO) {
@@ -76,7 +78,6 @@ int main(int argc, char* argv[])
             SDL_Texture* img = loadTexture(path, renderer);
             if (!img) cerr << "Can not load image: " << path << "\n";
             else {
-
                 bool running=1;
                 while (running){
                     SDL_RenderCopy(renderer, img, nullptr, nullptr);
@@ -140,9 +141,7 @@ int main(int argc, char* argv[])
                                 SDL_RenderPresent(renderer);
                         }
                         //hiện điểm
-
                         updateScore(renderer, s_Rect, score, white);
-
                     }
                     chars.clear();
                     if (hidden_word ==secret_word) {
@@ -167,9 +166,7 @@ int main(int argc, char* argv[])
                             SDL_Delay(1000);
                             updateLose(renderer, bad_guess, running);
                     }
-
                 }
-
             }
         }
         SDL_RenderPresent(renderer);
@@ -185,6 +182,5 @@ int main(int argc, char* argv[])
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
-
     return 0;
 }
