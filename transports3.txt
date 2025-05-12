@@ -1,0 +1,22 @@
+convertible
+dragster
+handcart
+hovercraft
+icebreaker
+jetliner
+limousine
+locomotive
+longboard
+monorail
+motorboat
+paraglider
+rickshaw
+roadster
+rowing boat
+sailboat
+skateboard
+snowmobile
+speedboat
+submarine
+unicycle
+zeppelin
