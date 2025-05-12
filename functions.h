@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 #pragma once
 #include "graphics.h"
 #include <string>
@@ -13,6 +11,7 @@
 #include <SDL_ttf.h>
 
 using namespace std;
+
 extern string filename;
 extern char level;
 extern vector <string> word_list;
@@ -21,8 +20,8 @@ extern int hint, maxhint, hint1;
 extern vector <char> chars;
 extern float totalScore, Score;
 extern int x;
-void chooseCategory(SDL_Event event);
 
+void chooseCategory(SDL_Event event);
 void createSecrectWord(string &s);
 void createWordList(const string& filename);
 string createHiddenWord(const string &s);
