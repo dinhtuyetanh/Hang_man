@@ -5,10 +5,8 @@ const char* w_title="Hang man";
 const int w_width =800, w_height=600;
 
 GameState state = INTRO;
-void updateScore(SDL_Renderer* renderer, SDL_Rect s_Rect, TTF_Font* score,
-                  SDL_Color white ){
+void updateScore(SDL_Renderer* renderer, SDL_Rect s_Rect, TTF_Font* score, SDL_Color white ){
     SDL_Delay(600);
-
     ostringstream ss;
     ss <<fixed <<setprecision(1) << totalScore;
     string scoreText = ss.str();
@@ -59,12 +57,9 @@ void StartVideo(SDL_Renderer *renderer, SDL_Window* window){
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, frames[--currentFrame], nullptr, nullptr);
     SDL_RenderPresent(renderer);
-    for (int i=0;i<NUM_FRAMES;i++){
-        SDL_DestroyTexture(frames[i]);
-    }
-
 }
-void drawText(SDL_Renderer* renderer, const string &word, TTF_Font* font, const SDL_Color color, SDL_Rect dstRect, const bool can_giua){
+void drawText(SDL_Renderer* renderer, const string &word, TTF_Font* font,
+              const SDL_Color color, SDL_Rect dstRect, const bool can_giua){
     SDL_Surface* surface = TTF_RenderText_Solid(font, word.c_str(), color);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     dstRect.w= surface->w;
@@ -81,7 +76,8 @@ void drawRectangle(SDL_Renderer* renderer, SDL_Rect rect){
     }
     SDL_RenderPresent(renderer);
 }
-void warningText(SDL_Renderer* renderer, SDL_Rect rect, const int& bad_guess, TTF_Font* font, SDL_Color color){
+void warningText(SDL_Renderer* renderer, SDL_Rect rect, 
+                  const int& bad_guess, TTF_Font* font, SDL_Color color){
     SDL_SetRenderDrawColor(renderer, 74, 106, 80, 105);
     drawRectangle(renderer, rect);
     string warning="Try again! You've made " +to_string(bad_guess);
