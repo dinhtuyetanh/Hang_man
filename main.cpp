@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 int main(int argc, char* argv[])
 {
     SDL_Init(SDL_INIT_EVERYTHING);
@@ -19,12 +21,6 @@ int main(int argc, char* argv[])
     SDL_Rect rectHiddenText = {160, 350, 500, 60}, rectMistakes = {215, 265,365,45};
 
     if (!font1) {
-        SDL_Log("Font load error: %s", TTF_GetError());
-    }
-    if (!font) {
-        SDL_Log("Font load error: %s", TTF_GetError());
-    }
-    if (!score) {
         SDL_Log("Font load error: %s", TTF_GetError());
     }
 
@@ -65,6 +61,7 @@ int main(int argc, char* argv[])
             }
             SDL_FlushEvent(SDL_KEYDOWN);
         }
+
         SDL_RenderClear(renderer);
 
        if (state == INTRO) {
@@ -78,6 +75,7 @@ int main(int argc, char* argv[])
             SDL_Texture* img = loadTexture(path, renderer);
             if (!img) cerr << "Can not load image: " << path << "\n";
             else {
+
                 bool running=1;
                 while (running){
                     SDL_RenderCopy(renderer, img, nullptr, nullptr);
@@ -91,11 +89,10 @@ int main(int argc, char* argv[])
                             cout<<"Can not load file\n";
                             return 0;
                     }
-
                     int bad_guess=0;
                     string secret_word, hidden_word;
 
-                    createSecrectWord(secret_word);
+                    createSecretWord(secret_word);
                     hidden_word=createHiddenWord(secret_word);
                     SDL_Rect s_Rect={535,165,125,100};
                     SDL_Rect scoreRect; scoreRect.y=165; scoreRect.x=410;
@@ -121,8 +118,10 @@ int main(int argc, char* argv[])
                                 int dem1=0, dem2=0;
                                 isCharInWord(guess, secret_word, dem1);
                                 if (isCharInWord(guess, c_hint, dem2)) dem1-=dem2;;
-                                if (dem1>1&&totalScore>0) totalScore-=40.0/((int)secret_word.size());
+                                if (dem1>1) totalScore-=totalScore*5/100;
                                 c_hint.push_back(guess);
+                                for (auto i:c_hint) cout<<i<<" ";
+                                cout<<endl<<dem1<<endl;
                                 if (dem1<=1) chars.push_back(guess);
                                 SDL_SetRenderDrawColor(renderer, 91, 130, 93, 255);
                                 drawRectangle(renderer, rectHiddenText);
@@ -142,8 +141,9 @@ int main(int argc, char* argv[])
                         }
                         //hiện điểm
                         updateScore(renderer, s_Rect, score, white);
+
                     }
-                    chars.clear();
+                    chars.clear(); c_hint.clear();
                     if (hidden_word ==secret_word) {
                             totalScore+=30.0*(1-1.0*bad_guess/(int)secret_word.size())+20.0*hint/maxhint+10;
 
@@ -154,6 +154,8 @@ int main(int argc, char* argv[])
                                 level='1';
                                 hint=maxhint;
                                 state=INTRO;
+                                running=0;
+                                filename.clear();
                                 break;
                             }
                     }
@@ -166,7 +168,9 @@ int main(int argc, char* argv[])
                             SDL_Delay(1000);
                             updateLose(renderer, bad_guess, running);
                     }
+
                 }
+
             }
         }
         SDL_RenderPresent(renderer);
@@ -182,5 +186,6 @@ int main(int argc, char* argv[])
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+
     return 0;
 }
