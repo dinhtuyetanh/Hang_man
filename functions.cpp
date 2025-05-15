@@ -1,3 +1,4 @@
+
 #include "functions.h"
 #include "graphics.h"
 string filename="";
@@ -7,7 +8,7 @@ int max_bad_guess=6;
 vector <char> chars;
 int hint=5, maxhint=5, hint1;
 
-int x;//khong quan trọng
+int x;//khong quan trong
 
 float totalScore=0, Score;
 void chooseCategory(SDL_Event event){
@@ -39,7 +40,7 @@ void createWordList(const string& filename){
         word_list.push_back(s);
     }
 }
-void createSecrectWord(string &s){
+void createSecretWord(string &s){
     srand(time(0));
     int index;
     if (!word_list.empty()) index=rand()%(int)word_list.size();
@@ -69,9 +70,11 @@ char guessAChar(SDL_Renderer* renderer, TTF_Font* font, TTF_Font* font1, SDL_Col
     char g='\0';
     chars.push_back(g);
     do{
+
         SDL_Event e;
         while (SDL_PollEvent(&e)){
             if (e.type == SDL_QUIT) exit(0);
+
             if (e.type==SDL_KEYDOWN){
                 SDL_Keycode key = e.key.keysym.sym;
 
@@ -120,6 +123,7 @@ char guessAChar(SDL_Renderer* renderer, TTF_Font* font, TTF_Font* font1, SDL_Col
     }
     while (isCharInWord(g, chars,x));
     return g;
+
 }
 
 void updateWin(SDL_Renderer* renderer, int &bad_guess, bool &running, const int&Score, const int&hint1){
