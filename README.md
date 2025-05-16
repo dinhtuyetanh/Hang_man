@@ -18,6 +18,9 @@
 - Từ cần đoán sẽ được ẩn, các chữ cái sẽ được thay bằng '-'
 - Nhấn các chữ cái trên bàn phím để đoán
 - Sử dụng gợi ý (Hint) nếu cần
+ ## Cài đặt
+ - Tải file ['HM.zip'](https://github.com/dinhtuyetanh/Hang_man/releases)
+ - Giải nén và chạy file [hangman.exe] 
 ## Ngôn ngữ lập trình và thư viện đồ họa
 ### Ngôn ngữ lập trình
 - C++17
